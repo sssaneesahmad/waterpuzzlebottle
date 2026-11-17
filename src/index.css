@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #050A2D;
+    color: #F3F8FF;
+    font-family: var(--font-body);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-nums {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate3d(6px, -18px, 0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulseAura {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.85;
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes coinPop {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.28) rotate(-8deg);
+  }
+  70% {
+    transform: scale(0.94) rotate(4deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes liquidRipple {
+  0%, 100% {
+    transform: translateY(0) scaleX(1);
+  }
+  50% {
+    transform: translateY(-1px) scaleX(0.98);
+  }
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(0.7);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.75;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-48px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes shakeGentle {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px) rotate(-1.5deg); }
+  40% { transform: translateX(5px) rotate(1.5deg); }
+  60% { transform: translateX(-4px) rotate(-1deg); }
+  80% { transform: translateX(3px) rotate(0.8deg); }
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translate3d(0, -20px, 0) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--tx, 20px), var(--ty, 260px), 0) rotate(var(--rot, 360deg)) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes splashDrop {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(var(--dx, 0px), var(--dy, -22px), 0) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow var(--dur, 7s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.animate-pulse-aura {
+  animation: pulseAura 6s ease-in-out infinite;
+}
+
+.animate-star-twinkle {
+  animation: starTwinkle var(--dur, 4.5s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.animate-coin-pop {
+  animation: coinPop 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-shake-gentle {
+  animation: shakeGentle 320ms cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.animate-bubble {
+  animation: bubbleRise var(--dur, 2.4s) ease-in infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-pulse-aura,
+  .animate-star-twinkle,
+  .animate-coin-pop,
+  .animate-shake-gentle,
+  .animate-bubble {
+    animation: none !important;
+  }
+}
+
+.safe-pb {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+.safe-pt {
+  padding-top: max(10px, env(safe-area-inset-top));
+}
